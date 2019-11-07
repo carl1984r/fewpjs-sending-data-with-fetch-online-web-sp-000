@@ -13,3 +13,9 @@ function submitData(name, email) {
   },
   body: JSON.stringify(formData)
 };
+
+return fetch("http://localhost:3000/users", configObj)
+  .then((response) => { return response.json(); })
+  .then((json) => { document.querySelector('body').innerHTML += `<h1>User ID: ${json.id}</h1>` })
+  .catch((error) => { document.querySelector('body').innerHTML += `<h1>Error: ${error.message}</h1>` });
+}
